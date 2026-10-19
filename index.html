@@ -81,6 +81,14 @@
   }
   .topbar .brand{display:flex; align-items:center;}
   .topbar .brand img{height:24px; width:auto; display:block;}
+  .topbar .cta .short{display:none;}
+  @media (max-width:640px){
+    .topbar{padding:10px 14px; gap:10px;}
+    .topbar .brand img{height:20px;}
+    .topbar .cta{font-size:12.5px; padding:9px 12px;}
+    .topbar .cta .long{display:none;}
+    .topbar .cta .short{display:inline;}
+  }
   .topbar .cta{
     background:var(--accent); color:#fff; padding:9px 16px; border-radius:4px;
     font-weight:700; white-space:nowrap; text-decoration:none; font-size:13px;
@@ -304,7 +312,7 @@
 
 <div class="topbar">
   <div class="brand"><img src="gn-logo-weiss.png" alt="GripNight"></div>
-  <a class="cta" href="#offer">Bis zu 54 % sparen + Gratis-Versand →</a>
+  <a class="cta" href="#offer"><span class="long">Bis zu 54 % sparen + Gratis-Versand →</span><span class="short">Bis zu 54 % sparen →</span></a>
 </div>
 
 <div class="wrap">
