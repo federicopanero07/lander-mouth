@@ -28,7 +28,7 @@
   Cookie-Banner (loadTracking) gestartet. Nicht direkt in den <head> verschieben.
 -->
 <script>
-  var META_PIXEL_ID = 'YOUR_PIXEL_ID';
+  var META_PIXEL_ID = '999340931170387';
   function loadTracking(){
     if (window.__trackingLoaded) return; window.__trackingLoaded = true;
     if (META_PIXEL_ID.indexOf('YOUR_') !== 0) {
@@ -588,6 +588,13 @@
     if (v === 'yes') loadTracking();
   }
   function openCookie(){ document.getElementById('cookie').style.display = 'block'; }
+  // Meta-Event beim Klick auf Paket oder Kauf-Button (nur wenn der Pixel nach Einwilligung geladen ist)
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href*="shop.gripnight.com/products/"]');
+    if (!a || typeof fbq !== 'function') return;
+    var m = a.href.match(/paket=(\d)/);
+    fbq('trackCustom', 'ShopKlick', { paket: m ? m[1] : '3', quelle: a.className || 'link' });
+  });
   (function(){
     var c = getConsent();
     if (c === 'yes') loadTracking();
